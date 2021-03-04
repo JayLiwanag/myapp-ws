@@ -1,0 +1,54 @@
+spring:
+  main:
+    banner_mode: off
+
+  devtools:
+    restart:
+      enabled: true
+
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+#      ddl-auto: none
+      ddl-auto: create-drop
+
+  # Security
+  security:
+    user:
+      name: admin
+      password: Ab!23456
+      roles: manager
+
+
+app:
+  # JWT properties
+  jwt:
+    security:
+      secretKey: q4POhxsuWo4gthICIf+xuRLyjr5Mf6k3GRCgGtDmCnJhFovSrlIQHSgkIDqymJxcUeCIMhAYY8WA/ZusE7wr6Q
+      expirationDay: 10
+      tokenPrefi: Bearer
+      authoritiesTag: authorities
+
+  # APP properties
+  properties:
+    userIdHeader: UserID
+    signUpUrl: /users
+    loginUrl: /users/login
+    h2consoleUrl: /h2-console/**
+    h2Enabled: true
+    swaggerUrl: /swagger-ui/**
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
